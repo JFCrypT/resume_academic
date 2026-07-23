@@ -380,3 +380,49 @@ section[aria-labelledby="docencia"] .entry h3 {
 .plain-subheading {
     font-weight: 400;
 }
+
+
+/* ==========================================================
+   Estructura de paginación
+   En pantalla, los contenedores añadidos no alteran el diseño.
+   ========================================================== */
+
+.section-opening
+{
+    display: contents;
+}
+
+section[aria-labelledby="resumen"] .section-opening > p
+{
+    text-align: justify;
+    text-justify: inter-word;
+    font-style: italic;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.skills-continuation
+{
+    margin-top: 10px;
+}
+
+.opening-list
+{
+    margin-bottom: 0;
+}
+
+.list-continuation
+{
+    margin-top: 0;
+}
+
+.opening-publications
+{
+    margin-bottom: 0;
+}
+
+.publications-continuation
+{
+    margin-top: 0;
+    counter-reset: publication 1;
+}

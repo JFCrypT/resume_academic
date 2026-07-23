@@ -1,64 +1,147 @@
-@page {
+@page
+{
     size: A4;
-    margin: 0;
+    margin: 10mm 12mm 10mm;
 }
 
 html,
-body {
+body
+{
     width: auto;
     height: auto;
+
     margin: 0;
     padding: 0;
+
     overflow: visible;
+
     background: #ffffff;
 }
 
-body {
+body
+{
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
 }
 
-.cv {
-    width: 210mm;
-    min-height: 297mm;
+.cv
+{
+    width: auto;
+    min-height: auto;
     height: auto;
     max-height: none;
+
     margin: 0;
-    padding: 8mm 12mm 10mm;
+    padding: 0;
+
     overflow: visible;
+
     background: #ffffff;
+
     box-shadow: none;
 }
 
 .contact,
-.skills-categories {
+.skills-categories
+{
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/*
+ * El título de cada sección y su primer ítem forman una sola
+ * unidad de paginación. La sección completa puede continuar
+ * normalmente después de este bloque.
+ */
+.section-opening
+{
+    display: block;
+
+    page-break-inside: avoid;
+
+    break-inside: avoid;
+    break-inside: avoid-page;
+}
+
+/*
+ * Las secciones breves deben permanecer completas en una sola página.
+ */
+section[aria-labelledby="conferencias"],
+section[aria-labelledby="capacitaciones"],
+section[aria-labelledby="distinciones"],
+section[aria-labelledby="jurado"],
+section[aria-labelledby="idiomas"]
+{
+    page-break-inside: avoid;
+
+    break-inside: avoid;
+    break-inside: avoid-page;
+}
+
+/*
+ * Cada unidad semántica individual debe permanecer completa.
+ */
 .entry,
 .education-entry,
 .research-entry,
 .skill-category,
-.publications li {
-    break-inside: avoid;
+.publications > li,
+section > ul > li,
+.opening-list > li,
+.list-continuation > li,
+article > ul > li
+{
     page-break-inside: avoid;
+
+    break-inside: avoid;
+    break-inside: avoid-page;
 }
 
+/*
+ * Las entradas de experiencia, educación, investigación y docencia
+ * son los ítems principales del CV.
+ */
+article.entry
+{
+    page-break-inside: avoid;
+
+    break-inside: avoid;
+    break-inside: avoid-page;
+}
+
+/*
+ * Evita separar encabezados internos de su contenido inmediato.
+ */
 h1,
 h2,
-h3 {
-    break-after: avoid;
+h3,
+.entry-heading,
+.subheading,
+.list-intro
+{
     page-break-after: avoid;
+
+    break-after: avoid;
+    break-after: avoid-page;
+}
+
+.entry-heading
+{
+    page-break-inside: avoid;
+
+    break-inside: avoid;
+    break-inside: avoid-page;
 }
 
 p,
-li {
+li
+{
     orphans: 2;
     widows: 2;
 }
 
-a {
+a
+{
     color: inherit;
     text-decoration: none;
 }
