@@ -41,6 +41,15 @@ body
     box-shadow: none;
 }
 
+/*
+ * El botón de descarga pertenece únicamente a la versión web.
+ * Se oculta al generar el PDF desde el navegador.
+ */
+.pdf-download
+{
+    display: none;
+}
+
 .contact,
 .skills-categories
 {
